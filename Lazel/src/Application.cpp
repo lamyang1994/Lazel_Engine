@@ -1,5 +1,5 @@
 #include "Lazel/Application.h"
-#include <iostream>
+#include "Lazel/Log.h"
 
 namespace Lazel{
     Application::Application()
@@ -14,7 +14,7 @@ namespace Lazel{
 
     void Application::Run()
     {
-        std::cout << "Hazel App is Runing...\n";
+        Lazel::Log::GetClientLogger()->error("Hazel App is Runing...");
         while(true);
     }
 

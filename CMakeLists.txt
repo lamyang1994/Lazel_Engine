@@ -15,6 +15,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/Debug/lib)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/Lazel/include
+    ${PROJECT_SOURCE_DIR}/Lazel/vendor/spdlog/include
 )
 
 link_directories(

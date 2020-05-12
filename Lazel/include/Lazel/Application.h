@@ -3,7 +3,8 @@
 #include "Core.h"
 
 namespace Lazel {
-    class LAZEL_API Application{
+    class LAZEL_API Application 
+    {
     public:
         Application();
         virtual ~Application();
