@@ -14,7 +14,7 @@ namespace Lazel{
 
     void Application::Run()
     {
-        Lazel::Log::GetClientLogger()->error("Hazel App is Runing...");
+        LZ_CLIENT_INFO("Lazel App is Runing...");
         while(true);
     }
 
