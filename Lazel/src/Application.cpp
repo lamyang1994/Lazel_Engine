@@ -1,5 +1,6 @@
 #include "Lazel/Application.h"
 #include "Lazel/Log.h"
+#include "Events/KeyEvent.h"
 
 namespace Lazel{
     Application::Application()
@@ -14,7 +15,8 @@ namespace Lazel{
 
     void Application::Run()
     {
-        LZ_CLIENT_INFO("Lazel App is Runing...");
+        KeyPressedEvent e(0, 1);
+        LZ_TRACE(e);
         while(true);
     }
 

@@ -1,12 +1,14 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.16)
 
 project(GameEngine)
 
 message(STATUS, "ENV{CXXFLAGS}, $ENV{CXXFLAGS}")
 set(CMAKE_BUILD_TYPE "Debug")
-set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -std=c++17 -framework Cocoa -framework OpenGL -framework IOKit")
+set(CMAKE_CXX_FLAGS "$ENV{CXXFLAGS} -std=c++17 ")
 set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
+set(CMAKE_LINK_FLAGS "-framework Cocoa -framework OpenGL -framework IOKit")
 
 # add_definitions("-DGLEW_STATIC")
 
