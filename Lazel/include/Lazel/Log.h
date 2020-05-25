@@ -1,7 +1,5 @@
 #pragma once
 
-#include "lzpch.hpp"
-
 #include "Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"

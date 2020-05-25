@@ -65,20 +65,19 @@ namespace Lazel {
     class LAZEL_API MouseButtonPressedEvent : public MouseButtonEvent 
     {
     public:
-        MouseButtonPressedEvent(int button, int repeatCount)
-            : MouseButtonEvent(button), m_RepeatCount(repeatCount) { }
+        MouseButtonPressedEvent(int button)
+            : MouseButtonEvent(button) { }
 
         std::string ToString() const override 
         {
             std::stringstream ss;
-            ss << "MouseButtonPressedEvent: " << m_Button << " (repeat: " << m_RepeatCount << ")";
+            ss << "MouseButtonPressedEvent: " << m_Button;
             return ss.str(); 
         }
 
         EVENT_CLASS_TYPE(MouseButtonPressed)
 
     private:
-        int m_RepeatCount;
 
     };
     
