@@ -3,6 +3,7 @@
 #include "Core.h"
 #include "Window.h"
 #include "Events/ApplicationEvent.h"
+#include "Lazel/LayerStack.h"
 
 namespace Lazel {
 
@@ -11,12 +12,17 @@ namespace Lazel {
     public:
         Application();
         virtual ~Application();
-        void Run();
+        void PushLayer(Layer* layer);
+        void PushOverlay(Layer* layer);
         void OnEvent(Event& e);
+        void Run();
+
     private:
-        bool OnWindowClose(WindowCloseEvent& e);
         std::unique_ptr<Window> m_Window;
+        LayerStack m_LayerStack;
         bool m_Runing = true;
+
+        bool OnWindowClose(WindowCloseEvent& e);
     };   
 
     // To be Defined by Clients
