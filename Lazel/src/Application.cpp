@@ -1,5 +1,7 @@
 #include "lzpch.hpp"
 #include "Lazel/Application.h"
+
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace Lazel{
@@ -12,6 +14,9 @@ namespace Lazel{
         // std::bind here is used to reduce parameters number of OnEvent into 1
         // from "void(this, Event&) -> "void(Event&)" 
         m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
+        
+        unsigned int id;
+        glGenVertexArrays(1, &id);
     }
 
     Application::~Application()

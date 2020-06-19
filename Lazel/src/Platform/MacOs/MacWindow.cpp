@@ -1,8 +1,11 @@
 #include "lzpch.hpp"
 #include "MacWindow.h"
+
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
+
+#include <glad/glad.h>
 
 namespace Lazel {
     static bool s_GLFWInitialized = false;
@@ -67,10 +70,20 @@ namespace Lazel {
             LZ_CORE_ASSERT(success, "Failed to Initialize GLFW!")
             s_GLFWInitialized = true;
             glfwSetErrorCallback(GLFWErrorCallback);
+
+            glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
         }
-        
+
         m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(m_Window);
+
+        int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+        LZ_CORE_ASSERT(status, "Failed to Initialize GLAD!")
+        printf("OpenGL version: %s\n", glGetString(GL_VERSION));
+
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
 

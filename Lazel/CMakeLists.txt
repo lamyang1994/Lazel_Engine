@@ -8,3 +8,4 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
 add_subdirectory(src)
 add_subdirectory(vendor/glfw)
+add_subdirectory(vendor/glad)

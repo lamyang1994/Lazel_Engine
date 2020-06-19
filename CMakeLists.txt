@@ -19,6 +19,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/Lazel/include
     ${PROJECT_SOURCE_DIR}/Lazel/vendor/spdlog/include
     ${PROJECT_SOURCE_DIR}/Lazel/vendor/glfw/include
+    ${PROJECT_SOURCE_DIR}/Lazel/vendor/glad/include
 )
 
 link_directories(
