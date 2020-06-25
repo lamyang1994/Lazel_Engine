@@ -4,3 +4,6 @@
 [submodule "Lazel/vendor/glfw"]
 	path = Lazel/vendor/glfw
 	url = https://github.com/lamyang1994/glfw
+[submodule "Lazel/vendor/imgui"]
+	path = Lazel/vendor/imgui
+	url = https://github.com/lamyang1994/imgui.git

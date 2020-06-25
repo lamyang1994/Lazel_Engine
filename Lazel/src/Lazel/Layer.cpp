@@ -1,4 +1,4 @@
-#include "Lazel/Layer.h"
+#include "Layer.h"
 
 namespace Lazel {
     Layer::Layer(std::string name)

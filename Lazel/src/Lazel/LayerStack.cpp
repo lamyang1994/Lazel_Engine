@@ -1,4 +1,4 @@
-#include "Lazel/LayerStack.h"
+#include "LayerStack.h"
 
 namespace Lazel {
     LayerStack::LayerStack()

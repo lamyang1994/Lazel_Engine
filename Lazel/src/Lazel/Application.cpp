@@ -1,22 +1,25 @@
 #include "lzpch.hpp"
-#include "Lazel/Application.h"
+#include "Application.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace Lazel{
 
-    #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
-
+    Application* Application::s_instance = nullptr;
+    
     Application::Application()
     {
+        LZ_CORE_ASSERT(!s_instance, "Application Already Exists!")
+        s_instance = this;
+
         m_Window = std::unique_ptr<Window>(Window::Create());
         // std::bind here is used to reduce parameters number of OnEvent into 1
         // from "void(this, Event&) -> "void(Event&)" 
         m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
-        
-        unsigned int id;
-        glGenVertexArrays(1, &id);
+
+        m_ImGuiLayer = new ImGuiLayer();
+        PushOverlay(m_ImGuiLayer);
     }
 
     Application::~Application()
@@ -27,11 +30,13 @@ namespace Lazel{
     void Application::PushLayer(Layer* layer)
     {
         m_LayerStack.PushLayer(layer);
+        layer->OnAttach();
     }
 
     void Application::PushOverlay(Layer* layer)
     {
         m_LayerStack.PushOverlay(layer);
+        layer->OnAttach();
     }
 
     void Application::OnEvent(Event& e)
@@ -59,6 +64,11 @@ namespace Lazel{
             // since we defined begin() and end() for LayerStack
             for (Layer* layer : m_LayerStack)
                 layer->OnUpdate();
+
+            m_ImGuiLayer->Begin();
+            for (Layer* layer : m_LayerStack)
+                layer->OnImGuiRender();
+            m_ImGuiLayer->End();
 
             m_Window->OnUpdate();
         }

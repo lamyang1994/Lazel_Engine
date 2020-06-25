@@ -4,6 +4,7 @@
 
 #include "Events/Events.h"
 #include "Core.h"
+#include "GLFW/glfw3.h"
 
 namespace Lazel {
     
@@ -32,6 +33,7 @@ namespace Lazel {
 
         virtual unsigned int GetWidth() const = 0;
         virtual unsigned int GetHeight() const = 0;
+        virtual GLFWwindow* GetInstance() const = 0;
 
         // Window attributes
         virtual void SetEventCallback(const EventCallbackFn& callback) = 0;

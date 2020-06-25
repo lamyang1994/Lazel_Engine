@@ -14,6 +14,7 @@ namespace Lazel {
 
         unsigned int GetWidth() const override;
         unsigned int GetHeight() const override;
+        GLFWwindow* GetInstance() const override;
 
         void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; };
 

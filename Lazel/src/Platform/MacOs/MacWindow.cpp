@@ -1,9 +1,9 @@
 #include "lzpch.hpp"
 #include "MacWindow.h"
 
-#include "Events/ApplicationEvent.h"
-#include "Events/KeyEvent.h"
-#include "Events/MouseEvent.h"
+#include "Lazel/Events/ApplicationEvent.h"
+#include "Lazel/Events/KeyEvent.h"
+#include "Lazel/Events/MouseEvent.h"
 
 #include <glad/glad.h>
 
@@ -42,6 +42,11 @@ namespace Lazel {
     unsigned int MacWindow::GetHeight() const
     {
         return m_Data.Height;
+    }
+
+    GLFWwindow* MacWindow::GetInstance() const
+    {
+        return m_Window;
     }
 
     void MacWindow::SetVSync(bool enable) {
